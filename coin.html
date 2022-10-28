@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+
+    <title>CoinFlip by Shanel</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Let's flip a coin!</h2>
+        <!-- CONTROLLER -->
+        <div class="headsortails">
+            <h1>Coin Flip</h1>
+            <h3>Choose heads or tails:</h3>
+            <div>
+                <div id="guess"></div>
+                <div id="result"></div>
+            </div>
+            <div class="imageholder"></div>
+
+            <div id="winner"></div>
+            <button id="head" type="button">Head</button>
+            <button id="tail" type="button">Tail</button>
+
+
+            <script>
+                let headBtn = document.getElementById("head");
+                let tailBtn = document.getElementById("tail");
+                let guess = document.getElementById("guess");
+                let result = document.getElementById("result");
+                let winner = document.getElementById("winner");
+                //   let imageholder = document.getElementById("imageholder")
+                let winningCoin = '';
+                let userGuess = '';
+
+                const flip = () => {
+                    let num = Math.random();
+                    if (num < 0.5) {
+                        winningCoin = 'head';
+                        result.innerHTML = "You got <strong>Head</strong>";
+                        //   document.imageholder.innerHTML = img src="head.png" alt="Head Coin" 
+                    } else {
+                        result.innerHTML = "You got <strong>Tail</strong>";
+                        winningCoin = 'tail';
+                        //    document.imageholder.innerHTML = img src="tail.png" alt="Tail Coin"
+
+                    }
+                }
+
+                const chooseWinner = () => {
+                    userGuess == winningCoin ? winner.innerHTML = 'You win!' : winner.innerHTML = 'You lose. Better luck next time.'
+                    console.log(userGuess);
+                    console.log(winningCoin);
+                    console.log(userGuess == winningCoin)
+                }
+
+                headBtn.addEventListener("click", () => {
+                    guess.innerHTML = "You guessed <strong>Head</strong>";
+                    userGuess = 'head';
+                    flip();
+                    chooseWinner();
+                });
+                tailBtn.addEventListener("click", () => {
+                    guess.innerHTML = "You guessed <strong>Tail</strong>";
+                    userGuess = 'tail';
+                    flip();
+                    chooseWinner();
+                });
+            </script>
+</body>
+
+</html>
